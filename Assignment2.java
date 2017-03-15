@@ -99,7 +99,7 @@ public class Assignment2 {
         
         try {
         	// Prepare the appropriate database query
-		    queryString = "DROP VIEW IF EXISTS ta_or_inst CASCADEAS ";
+		    queryString = "DROP VIEW IF EXISTS ta_or_inst";
 		    ps = connection.prepareStatement(queryString); 
 		    ps.executeUpdate();
         	
@@ -317,7 +317,13 @@ public class Assignment2 {
 		    ps.setInt(1, groupID);
 		    rs = ps.executeQuery();
 		    // get group_size from query result
-		    int group_size = rs.getInt("group_size");
+		    int group_size;
+		    if(rs.next()){
+		    	group_size = rs.getInt("group_size");
+		    }else{
+		    	group_size = 0;
+		    }
+		    
 		     
 		    
 		    // Step 6 - check if the group is already at capacity
