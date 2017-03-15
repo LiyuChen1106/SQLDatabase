@@ -434,6 +434,8 @@ public class Assignment2 {
 //		    ps_main.executeUpdate();
 			
 		    boolean result;
+		    int group_id_result;
+		    String username_result;
 		    //assignGrader function
 		    //test 1: insert successful //remember to add a new group 2009 to the dataset
 		    result = a2.assignGrader(2009, "t3");
@@ -443,6 +445,13 @@ public class Assignment2 {
 					  "FROM Grader";
 		    ps_main = a2.connection.prepareStatement(queryString_main); 
 		    rs_main = ps_main.executeQuery();
+		    System.out.println("Grader table--------------------------");
+		    System.out.println("group_id" + "\t" + "username");
+		    while(!rs_main.next()){
+		    	group_id_result = rs_main.getInt("group_id");
+		    	username_result = rs_main.getString("username");
+		    	System.out.println(group_id_result + "\t" + username_result);
+		    }
 		    
 		    //test 2: Invalid group ID!
 		    result = a2.assignGrader(2010, "t3");
@@ -452,6 +461,13 @@ public class Assignment2 {
 					  "FROM Grader";
 		    ps_main = a2.connection.prepareStatement(queryString_main); 
 		    rs_main = ps_main.executeQuery();
+		    System.out.println("Grader table--------------------------");
+		    System.out.println("group_id" + "\t" + "username");
+		    while(!rs_main.next()){
+		    	group_id_result = rs_main.getInt("group_id");
+		    	username_result = rs_main.getString("username");
+		    	System.out.println(group_id_result + "\t" + username_result);
+		    }
 		    
 		    //test 3: Grader is neither TA nor instructor!
 		    result = a2.assignGrader(2001, "s1");
@@ -461,6 +477,13 @@ public class Assignment2 {
 					  "FROM Grader";
 		    ps_main = a2.connection.prepareStatement(queryString_main); 
 		    rs_main = ps_main.executeQuery();
+		    System.out.println("Grader table--------------------------");
+		    System.out.println("group_id" + "\t" + "username");
+		    while(!rs_main.next()){
+		    	group_id_result = rs_main.getInt("group_id");
+		    	username_result = rs_main.getString("username");
+		    	System.out.println(group_id_result + "\t" + username_result);
+		    }
 		    		    
 		    //test 4: Another grader has been assigned to the group!
 		    result = a2.assignGrader(2001, "t3");
@@ -470,6 +493,13 @@ public class Assignment2 {
 					  "FROM Grader";
 		    ps_main = a2.connection.prepareStatement(queryString_main); 
 		    rs_main = ps_main.executeQuery();
+		    System.out.println("Grader table--------------------------");
+		    System.out.println("group_id" + "\t" + "username");
+		    while(!rs_main.next()){
+		    	group_id_result = rs_main.getInt("group_id");
+		    	username_result = rs_main.getString("username");
+		    	System.out.println(group_id_result + "\t" + username_result);
+		    }
 		    		    
 		    
 		    //recordMember function
@@ -481,59 +511,108 @@ public class Assignment2 {
 					  "FROM Membership";
 		    ps_main = a2.connection.prepareStatement(queryString_main); 
 		    rs_main = ps_main.executeQuery();
+		    System.out.println("Membership table--------------------------");
+		    System.out.println("group_id" + "\t" + "username");
+		    while(!rs_main.next()){
+		    	group_id_result = rs_main.getInt("group_id");
+		    	username_result = rs_main.getString("username");
+		    	System.out.println(group_id_result + "\t" + username_result);
+		    }
 		    		    
 		    result = a2.recordMember(1000, 2001, "t2");
 		    System.out.println("f2: test 1_2: Invalid username! -not student -"  + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
-					  "FROM Grader";
+					  "FROM Membership";
 		    ps_main = a2.connection.prepareStatement(queryString_main); 
 		    rs_main = ps_main.executeQuery();
+		    System.out.println("Membership table--------------------------");
+		    System.out.println("group_id" + "\t" + "username");
+		    while(!rs_main.next()){
+		    	group_id_result = rs_main.getInt("group_id");
+		    	username_result = rs_main.getString("username");
+		    	System.out.println(group_id_result + "\t" + username_result);
+		    }
 		    		    
 		    //test 2: Invalid assignment ID!
 		    result = a2.recordMember(1003, 2001, "s3");
 		    System.out.println("f2: test 2: Invalid assignment ID! -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
-					  "FROM Grader";
+					  "FROM Membership";
 		    ps_main = a2.connection.prepareStatement(queryString_main); 
 		    rs_main = ps_main.executeQuery();
+		    System.out.println("Membership table--------------------------");
+		    System.out.println("group_id" + "\t" + "username");
+		    while(!rs_main.next()){
+		    	group_id_result = rs_main.getInt("group_id");
+		    	username_result = rs_main.getString("username");
+		    	System.out.println(group_id_result + "\t" + username_result);
+		    }
 		    		    
 		    //test 3: Invalid group ID!
 		    result = a2.recordMember(1000, 2006, "s1");
 		    System.out.println("f2: test 3: Grader is neither TA nor instructor! -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
-					  "FROM Grader";
+					  "FROM Membership";
 		    ps_main = a2.connection.prepareStatement(queryString_main); 
 		    rs_main = ps_main.executeQuery();
+		    System.out.println("Membership table--------------------------");
+		    System.out.println("group_id" + "\t" + "username");
+		    while(!rs_main.next()){
+		    	group_id_result = rs_main.getInt("group_id");
+		    	username_result = rs_main.getString("username");
+		    	System.out.println(group_id_result + "\t" + username_result);
+		    }
 		    		    
 		    //test 4: Already in this group.
 		    result = a2.recordMember(1000, 2001, "s1");
 		    System.out.println("f2: test 4: Already in this group. -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
-					  "FROM Grader";
+					  "FROM Membership";
 		    ps_main = a2.connection.prepareStatement(queryString_main); 
 		    rs_main = ps_main.executeQuery();
+		    System.out.println("Membership table--------------------------");
+		    System.out.println("group_id" + "\t" + "username");
+		    while(!rs_main.next()){
+		    	group_id_result = rs_main.getInt("group_id");
+		    	username_result = rs_main.getString("username");
+		    	System.out.println(group_id_result + "\t" + username_result);
+		    }
 		    		    
 		    //test 5: This group is full!
 		    result = a2.recordMember(1000, 2001, "s8");
 		    System.out.println("f2: test 5: This group is full! -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
-					  "FROM Grader";
+					  "FROM Membership";
 		    ps_main = a2.connection.prepareStatement(queryString_main); 
 		    rs_main = ps_main.executeQuery();
+		    System.out.println("Membership table--------------------------");
+		    System.out.println("group_id" + "\t" + "username");
+		    while(!rs_main.next()){
+		    	group_id_result = rs_main.getInt("group_id");
+		    	username_result = rs_main.getString("username");
+		    	System.out.println(group_id_result + "\t" + username_result);
+		    }
 		    		    
 		    //test 6: insert successful
 		    result = a2.recordMember(1001, 2005, "s7");
 		    System.out.println("f2: test 6: insert successful -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
-					  "FROM Grader";
+					  "FROM Membership";
 		    ps_main = a2.connection.prepareStatement(queryString_main); 
 		    rs_main = ps_main.executeQuery();
+		    System.out.println("Membership table--------------------------");
+		    System.out.println("group_id" + "\t" + "username");
+		    while(!rs_main.next()){
+		    	group_id_result = rs_main.getInt("group_id");
+		    	username_result = rs_main.getString("username");
+		    	System.out.println(group_id_result + "\t" + username_result);
+		    }
 		    		    
 		    
 		    
