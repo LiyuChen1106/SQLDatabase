@@ -98,6 +98,10 @@ public class Assignment2 {
     public boolean assignGrader(int groupID, String grader) {
         
         try {
+        	// Prepare the appropriate database query
+		    queryString = "DROP VIEW IF EXISTS ta_or_inst CASCADEAS ";
+		    ps = connection.prepareStatement(queryString); 
+		    ps.executeUpdate();
         	
         	// Step 1 - check if the groupID is in AssignmentGroup table
 		    
@@ -131,7 +135,7 @@ public class Assignment2 {
 				  	"WHERE username = ?";
 		    ps = connection.prepareStatement(queryString); 
 		    // Insert that string into the PreparedStatement and execute it.
-		    ps.setInt(1, groupID);
+		    ps.setString(1, grader);
 		    rs = ps.executeQuery();
 		    
 		    //check if resultset is an empty table
@@ -288,13 +292,18 @@ public class Assignment2 {
 		    ps.setString(1, newMember);
 		    ps.setInt(2, groupID);
 		    rs = ps.executeQuery();
-		    // get username from query result
-		    username = rs.getString("username");
 		    
-		    if (username != null) {
-				System.out.println("Already in this group.");
+		    if(rs.next()){
+		    	System.out.println("Already in this group.");
 				return true;
 		    }
+		    // get username from query result
+		    //username = rs.getString("username");
+		    
+		    //if (username != null) {
+			//	System.out.println("Already in this group.");
+			//	return true;
+		    //}
 		    
 		    
 		    // Step 5 - get number of students already in this group
@@ -422,7 +431,7 @@ public class Assignment2 {
 		    //assignGrader function
 		    //test 1: insert successful //remember to add a new group 2009 to the dataset
 		    result = a2.assignGrader(2009, "t3");
-		    System.out.println("f1: test 1: insert successful" + result);
+		    System.out.println("f1: test 1: insert successful -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
 					  "FROM Grader";
@@ -431,7 +440,7 @@ public class Assignment2 {
 		    
 		    //test 2: Invalid group ID!
 		    result = a2.assignGrader(2010, "t3");
-		    System.out.println("f1: test 2: Invalid group ID!" + result);
+		    System.out.println("f1: test 2: Invalid group ID! " + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
 					  "FROM Grader";
@@ -440,7 +449,7 @@ public class Assignment2 {
 		    
 		    //test 3: Grader is neither TA nor instructor!
 		    result = a2.assignGrader(2001, "s1");
-		    System.out.println("f1: test 3: Grader is neither TA nor instructor!" + result);
+		    System.out.println("f1: test 3: Grader is neither TA nor instructor! -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
 					  "FROM Grader";
@@ -449,7 +458,7 @@ public class Assignment2 {
 		    		    
 		    //test 4: Another grader has been assigned to the group!
 		    result = a2.assignGrader(2001, "t3");
-		    System.out.println("f1: test 4: Another grader has been assigned to the group!" + result);
+		    System.out.println("f1: test 4: Another grader has been assigned to the group! -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
 					  "FROM Grader";
@@ -460,7 +469,7 @@ public class Assignment2 {
 		    //recordMember function
 		    //test 1: Invalid username! //remember to add a new group 2009 to the dataset
 		    result = a2.recordMember(1000, 2001, "s10");
-		    System.out.println("f2: test 1_1: Invalid username! -not in database" + result);
+		    System.out.println("f2: test 1_1: Invalid username! -not in database -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
 					  "FROM Membership";
@@ -468,7 +477,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    		    
 		    result = a2.recordMember(1000, 2001, "t2");
-		    System.out.println("f2: test 1_2: Invalid username! -not student" + result);
+		    System.out.println("f2: test 1_2: Invalid username! -not student -"  + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
 					  "FROM Grader";
@@ -477,7 +486,7 @@ public class Assignment2 {
 		    		    
 		    //test 2: Invalid assignment ID!
 		    result = a2.recordMember(1003, 2001, "s3");
-		    System.out.println("f2: test 2: Invalid assignment ID!" + result);
+		    System.out.println("f2: test 2: Invalid assignment ID! -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
 					  "FROM Grader";
@@ -486,7 +495,7 @@ public class Assignment2 {
 		    		    
 		    //test 3: Invalid group ID!
 		    result = a2.recordMember(1000, 2006, "s1");
-		    System.out.println("f2: test 3: Grader is neither TA nor instructor!" + result);
+		    System.out.println("f2: test 3: Grader is neither TA nor instructor! -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
 					  "FROM Grader";
@@ -495,7 +504,7 @@ public class Assignment2 {
 		    		    
 		    //test 4: Already in this group.
 		    result = a2.recordMember(1000, 2001, "s1");
-		    System.out.println("f2: test 4: Already in this group." + result);
+		    System.out.println("f2: test 4: Already in this group. -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
 					  "FROM Grader";
@@ -504,7 +513,7 @@ public class Assignment2 {
 		    		    
 		    //test 5: This group is full!
 		    result = a2.recordMember(1000, 2001, "s8");
-		    System.out.println("f2: test 5: This group is full!" + result);
+		    System.out.println("f2: test 5: This group is full! -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
 					  "FROM Grader";
@@ -513,7 +522,7 @@ public class Assignment2 {
 		    		    
 		    //test 6: insert successful
 		    result = a2.recordMember(1001, 2005, "s7");
-		    System.out.println("f2: test 6: insert successful" + result);
+		    System.out.println("f2: test 6: insert successful -" + result);
 		    //check the table
 		    queryString_main = "SELECT * " + 
 					  "FROM Grader";
