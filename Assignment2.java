@@ -119,7 +119,7 @@ public class Assignment2 {
 		    // Step 2 - check if grader is either a TA or instructor
 		    
 		    // Prepare the appropriate database query
-		    queryString = "CREATE VIEW grader AS " + 
+		    queryString = "CREATE VIEW ta_or_inst AS " + 
 		    		"(SELECT username " + 
 				  	"FROM MarkusUser " + 
 				  	"WHERE type = 'TA' OR type = 'instructor')";
@@ -127,7 +127,7 @@ public class Assignment2 {
 		    ps.executeUpdate();
 		    
 		    queryString = "SELECT username " + 
-				  	"FROM grader " + 
+				  	"FROM ta_or_inst " + 
 				  	"WHERE username = ?";
 		    ps = connection.prepareStatement(queryString); 
 		    // Insert that string into the PreparedStatement and execute it.
@@ -406,17 +406,17 @@ public class Assignment2 {
 		    // result set for the query
 		    ResultSet rs_main;
 		    
-		    // Prepare the appropriate database query
-		    queryString_main = "'\'i schema.ddl";
-		    ps_main = a2.connection.prepareStatement(queryString_main); 
-		    // Insert that string into the PreparedStatement and execute it.
-		    ps_main.executeUpdate();	
-		    
-		    // Prepare the appropriate database query
-		    queryString_main = "'\'i date.sql";
-		    ps_main = a2.connection.prepareStatement(queryString_main); 
-		    // Insert that string into the PreparedStatement and execute it.
-		    ps_main.executeUpdate();
+//		    // Prepare the appropriate database query
+//		    queryString_main = "'\'i schema.ddl";
+//		    ps_main = a2.connection.prepareStatement(queryString_main); 
+//		    // Insert that string into the PreparedStatement and execute it.
+//		    ps_main.executeUpdate();	
+//		    
+//		    // Prepare the appropriate database query
+//		    queryString_main = "'\'i date.sql";
+//		    ps_main = a2.connection.prepareStatement(queryString_main); 
+//		    // Insert that string into the PreparedStatement and execute it.
+//		    ps_main.executeUpdate();
 			
 		    boolean result;
 		    //assignGrader function
