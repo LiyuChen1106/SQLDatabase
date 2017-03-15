@@ -447,7 +447,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    System.out.println("Grader table--------------------------");
 		    System.out.println("group_id" + "\t" + "username");
-		    while(!rs_main.next()){
+		    while(rs_main.next()){
 		    	group_id_result = rs_main.getInt("group_id");
 		    	username_result = rs_main.getString("username");
 		    	System.out.println(group_id_result + "\t" + username_result);
@@ -463,7 +463,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    System.out.println("Grader table--------------------------");
 		    System.out.println("group_id" + "\t" + "username");
-		    while(!rs_main.next()){
+		    while(rs_main.next()){
 		    	group_id_result = rs_main.getInt("group_id");
 		    	username_result = rs_main.getString("username");
 		    	System.out.println(group_id_result + "\t" + username_result);
@@ -479,7 +479,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    System.out.println("Grader table--------------------------");
 		    System.out.println("group_id" + "\t" + "username");
-		    while(!rs_main.next()){
+		    while(rs_main.next()){
 		    	group_id_result = rs_main.getInt("group_id");
 		    	username_result = rs_main.getString("username");
 		    	System.out.println(group_id_result + "\t" + username_result);
@@ -495,7 +495,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    System.out.println("Grader table--------------------------");
 		    System.out.println("group_id" + "\t" + "username");
-		    while(!rs_main.next()){
+		    while(rs_main.next()){
 		    	group_id_result = rs_main.getInt("group_id");
 		    	username_result = rs_main.getString("username");
 		    	System.out.println(group_id_result + "\t" + username_result);
@@ -513,7 +513,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    System.out.println("Membership table--------------------------");
 		    System.out.println("group_id" + "\t" + "username");
-		    while(!rs_main.next()){
+		    while(rs_main.next()){
 		    	group_id_result = rs_main.getInt("group_id");
 		    	username_result = rs_main.getString("username");
 		    	System.out.println(group_id_result + "\t" + username_result);
@@ -528,7 +528,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    System.out.println("Membership table--------------------------");
 		    System.out.println("group_id" + "\t" + "username");
-		    while(!rs_main.next()){
+		    while(rs_main.next()){
 		    	group_id_result = rs_main.getInt("group_id");
 		    	username_result = rs_main.getString("username");
 		    	System.out.println(group_id_result + "\t" + username_result);
@@ -544,7 +544,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    System.out.println("Membership table--------------------------");
 		    System.out.println("group_id" + "\t" + "username");
-		    while(!rs_main.next()){
+		    while(rs_main.next()){
 		    	group_id_result = rs_main.getInt("group_id");
 		    	username_result = rs_main.getString("username");
 		    	System.out.println(group_id_result + "\t" + username_result);
@@ -560,7 +560,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    System.out.println("Membership table--------------------------");
 		    System.out.println("group_id" + "\t" + "username");
-		    while(!rs_main.next()){
+		    while(rs_main.next()){
 		    	group_id_result = rs_main.getInt("group_id");
 		    	username_result = rs_main.getString("username");
 		    	System.out.println(group_id_result + "\t" + username_result);
@@ -576,7 +576,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    System.out.println("Membership table--------------------------");
 		    System.out.println("group_id" + "\t" + "username");
-		    while(!rs_main.next()){
+		    while(rs_main.next()){
 		    	group_id_result = rs_main.getInt("group_id");
 		    	username_result = rs_main.getString("username");
 		    	System.out.println(group_id_result + "\t" + username_result);
@@ -592,7 +592,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    System.out.println("Membership table--------------------------");
 		    System.out.println("group_id" + "\t" + "username");
-		    while(!rs_main.next()){
+		    while(rs_main.next()){
 		    	group_id_result = rs_main.getInt("group_id");
 		    	username_result = rs_main.getString("username");
 		    	System.out.println(group_id_result + "\t" + username_result);
@@ -608,7 +608,7 @@ public class Assignment2 {
 		    rs_main = ps_main.executeQuery();
 		    System.out.println("Membership table--------------------------");
 		    System.out.println("group_id" + "\t" + "username");
-		    while(!rs_main.next()){
+		    while(rs_main.next()){
 		    	group_id_result = rs_main.getInt("group_id");
 		    	username_result = rs_main.getString("username");
 		    	System.out.println(group_id_result + "\t" + username_result);
