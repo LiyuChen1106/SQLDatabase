@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resumes SYSTEM "resume.dtd">
+<resumes>
+	+<resume rID="">
+		?<summary>
+		</summary>
+		<identification>
+			<name>
+				<forename></forename>
+				<surname></surname>
+				+<honorific></honorific>
+				*<title></title>
+			</name>
+			<DOB></DOB>
+			<citizenship></citizenship>
+			<address></address>
+			<telephone></telephone>
+			<email></email>
+		</identification>
+		?<education>
+			*<degree level="">
+				<degreeName></degreeName>
+				<institution></institution>
+				+<major></major>
+				*<minor></minor>
+				?<honours />
+				<period>
+					<startDate></startDate>
+					<endDate></endDate>
+				</period>
+			</degree>
+		</education>
+		?<experience>
+			*<position where="">
+				+<title></title>
+				?<description></description>
+				<period>
+					<startDate></startDate>
+					<endDate></endDate>
+				</period>
+			</position>
+		</experience>
+		<skills>
+			*<skill what="" level=""/>
+		</skills>
+	</resume>
+</resumes>
