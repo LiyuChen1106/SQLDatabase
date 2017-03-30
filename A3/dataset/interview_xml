@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE interviews SYSTEM "interview.dtd">
+<interviews>
+	<interview rID="4" pID="1" sID="2">
+		<date>01/01/2017</date>
+		<time>14:00</time>
+		<location>lll</location>
+		<assessment>
+			<techProficiency>58</techProficiency>
+			<communication>77</communication>
+			<enthusiasm>65</enthusiasm>
+			<collegiality>13</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="6" pID="1" sID="1">
+		<date>01/01/2017</date>
+		<time>13:00</time>
+		<location>lll</location>
+		<assessment>
+			<techProficiency>67</techProficiency>
+			<communication>89</communication>
+			<enthusiasm>99</enthusiasm>
+			<collegiality>12</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="7" pID="2" sID="1">
+		<date>01/01/2017</date>
+		<time>10:00</time>
+		<location>ttt</location>
+		<assessment>
+			<answers>
+				<answer qID="1">87</answer>
+			</answers>
+			<techProficiency>65</techProficiency>
+			<communication>100</communication>
+			<enthusiasm>100</enthusiasm>
+		</assessment>
+	</interview>
+
+	<interview rID="5" pID="2" sID="1">
+		<date>01/01/2017</date>
+		<time>11:00</time>
+		<location>ttt</location>
+		<assessment>
+			<answers>
+				<answer qID="1">98</answer>
+			</answers>
+			<techProficiency>33</techProficiency>
+			<communication>28</communication>
+			<enthusiasm>87</enthusiasm>
+			<collegiality>55</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="1" pID="3" sID="1">
+		<date>01/02/2017</date>
+		<time>10:00</time>
+		<location>ttt</location>
+		<assessment>
+			<answers>
+				<answer qID="2">88</answer>
+				<answer qID="3">0</answer>
+			</answers>
+			<techProficiency>56</techProficiency>
+			<communication>44</communication>
+			<enthusiasm>87</enthusiasm>
+			<collegiality>32</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="3" pID="3" sID="2">
+		<date>01/02/2017</date>
+		<time>11:00</time>
+		<location>ppp</location>
+		<assessment>
+			<answers>
+				<answer qID="3">33</answer>
+			</answers>
+			<techProficiency>42</techProficiency>
+			<communication>35</communication>
+			<enthusiasm>78</enthusiasm>
+			<collegiality>92</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="4" pID="3" sID="1">
+		<date>01/02/2017</date>
+		<time>16:00</time>
+		<location>lll</location>
+		<assessment>
+			<answers>
+				<answer qID="2">1</answer>
+			</answers>
+			<techProficiency>5</techProficiency>
+			<communication>6</communication>
+			<enthusiasm>45</enthusiasm>
+			<collegiality>77</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="2" pID="3" sID="3">
+		<date>01/03/2017</date>
+		<time>10:00</time>
+		<location>ttt</location>
+		<assessment>
+			<answers>
+				<answer qID="2">23</answer>
+				<answer qID="3">68</answer>
+			</answers>
+			<techProficiency>43</techProficiency>
+			<communication>71</communication>
+			<enthusiasm>15</enthusiasm>
+			<collegiality>66</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="3" pID="4" sID="3">
+		<date>01/03/2017</date>
+		<time>14:00</time>
+		<location>ppp</location>
+		<assessment>
+			<answers>
+				<answer qID="4">55</answer>
+			</answers>
+			<techProficiency>59</techProficiency>
+			<communication>72</communication>
+			<enthusiasm>36</enthusiasm>
+			<collegiality>44</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="6" pID="4" sID="3">
+		<date>01/03/2017</date>
+		<time>15:00</time>
+		<location>lll</location>
+		<assessment>
+			<answers>
+				<answer qID="4">44</answer>
+			</answers>
+			<techProficiency>23</techProficiency>
+			<communication>12</communication>
+			<enthusiasm>99</enthusiasm>
+			<collegiality>76</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="5" pID="4" sID="2">
+		<date>01/03/2017</date>
+		<time>14:00</time>
+		<location>ttt</location>
+		<assessment>
+			<techProficiency>54</techProficiency>
+			<communication>77</communication>
+			<enthusiasm>79</enthusiasm>
+			<collegiality>89</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="2" pID="5" sID="1">
+		<date>01/04/2017</date>
+		<time>12:00</time>
+		<location>ttt</location>
+		<assessment>
+			<answers>
+				<answer qID="5">87</answer>
+			</answers>
+			<techProficiency>97</techProficiency>
+			<communication>42</communication>
+			<enthusiasm>98</enthusiasm>
+			<collegiality>12</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="5" pID="5" sID="3">
+		<date>01/04/2017</date>
+		<time>11:00</time>
+		<location>ttt</location>
+		<assessment>
+			<answers>
+				<answer qID="5">56</answer>
+			</answers>
+			<techProficiency>36</techProficiency>
+			<communication>78</communication>
+			<enthusiasm>91</enthusiasm>
+			<collegiality>44</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="5" pID="6" sID="3">
+		<date>01/04/2017</date>
+		<time>15:00</time>
+		<location>lll</location>
+		<assessment>
+			<techProficiency>87</techProficiency>
+			<communication>75</communication>
+			<enthusiasm>88</enthusiasm>
+			<collegiality>50</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="6" pID="6" sID="3">
+		<date>01/04/2017</date>
+		<time>14:00</time>
+		<location>ppp</location>
+		<assessment>
+			<techProficiency>22</techProficiency>
+			<communication>33</communication>
+			<enthusiasm>45</enthusiasm>
+		</assessment>
+	</interview>
+
+	<interview rID="2" pID="7" sID="2">
+		<date>01/05/2017</date>
+		<time>13:00</time>
+		<location>ttt</location>
+		<assessment>
+			<answers>
+				<answer qID="6">77</answer>
+			</answers>
+			<techProficiency>54</techProficiency>
+			<communication>90</communication>
+			<enthusiasm>100</enthusiasm>
+			<collegiality>78</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="2" pID="8" sID="4">
+		<date>01/05/2017</date>
+		<time>11:00</time>
+		<location>lll</location>
+		<assessment>
+			<answers>
+				<answer qID="7">100</answer>
+			</answers>
+			<techProficiency>67</techProficiency>
+			<communication>89</communication>
+			<enthusiasm>54</enthusiasm>
+			<collegiality>100</collegiality>
+		</assessment>
+	</interview>
+
+	<interview rID="5" pID="8" sID="4">
+		<date>01/05/2017</date>
+		<time>10:00</time>
+		<location>ppp</location>
+		<assessment>
+			<answers>
+				<answer qID="7">87</answer>
+				<answer qID="8">72</answer>
+			</answers>
+			<techProficiency>33</techProficiency>
+			<communication>91</communication>
+			<enthusiasm>78</enthusiasm>
+		</assessment>
+	</interview>
+
+	<interview rID="6" pID="8" sID="4">
+		<date>01/05/2017</date>
+		<time>10:00</time>
+		<location>lll</location>
+		<assessment>
+			<answers>
+				<answer qID="7">66</answer>
+				<answer qID="8">23</answer>
+			</answers>
+			<techProficiency>37</techProficiency>
+			<communication>22</communication>
+			<enthusiasm>15</enthusiasm>
+			<collegiality>65</collegiality>
+		</assessment>
+	</interview>
+
+
+	<interviewer sID="1">
+		<forename>Jeffery</forename>
+		<surname>Rose</surname>
+		<honorific>Mr</honorific>
+		<honorific>Dr.</honorific>
+		<title>Manager</title>
+	</interviewer>
+
+	<interviewer sID="2">
+		<forename>King</forename>
+		<surname>Sheb</surname>
+		<honorific>Mr</honorific>
+		<title>VP</title>
+	</interviewer>
+
+	<interviewer sID="3">
+		<forename>Liu</forename>
+		<surname>Liu</surname>
+		<honorific>Prof</honorific>
+		<title>Developer</title>
+	</interviewer>
+
+	<interviewer sID="4">
+		<forename>Calo</forename>
+		<surname>Mu</surname>
+		<honorific>Ms</honorific>
+	</interviewer>
+
+</interviews>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resumes SYSTEM "resume.dtd">
+<resumes>
+	<resume rID="1">
+		<summary>
+		Over 9 years of experience, including 6 years as DBA in development and production environments.
+		</summary>
+		<identification>
+			<name>
+				<forename>Elsa</forename>
+				<surname>Zhang</surname>
+				<honorific>Ms</honorific>
+				<title>Chief Technology Officer</title>
+			</name>
+			<DOB>01/01/1997</DOB>
+			<citizenship>Canada</citizenship>
+			<address>11 st. George street, Toronto, ON</address>
+			<telephone>416-111-1111</telephone>
+			<email>Elsa@gmail.com</email>
+		</identification>
+		<education>
+			<degree level="undergraduate">
+				<degreeName>Bachelor</degreeName>
+				<institution>UofT</institution>
+				<major>ECE</major>
+				<minor>Math</minor>
+				<honours />
+				<period>
+					<startDate>01/09/2015</startDate>
+					<endDate>01/05/2019</endDate>
+				</period>
+			</degree>
+		</education>
+		<experience>
+			<position where="ABC Company">
+				<title>Database Administrator</title>
+				<description>
+				Created new databases, involving importing and exporting: installing and configured database software for Oracle Application development environment.
+				</description>
+				<period>
+					<startDate>01/07/2016</startDate>
+					<endDate>31/08/2016</endDate>
+				</period>
+			</position>
+		</experience>
+		<skills>
+			<skill what="SQL" level="4"/>
+		</skills>
+	</resume>
+
+	<resume rID="2">
+		<identification>
+			<name>
+				<forename>Coco</forename>
+				<surname>Zhang</surname>
+				<honorific>Ms</honorific>
+			</name>
+			<DOB>01/09/1997</DOB>
+			<citizenship>Canada</citizenship>
+			<address>22 st. George street, Toronto, ON</address>
+			<telephone>416-222-2222</telephone>
+			<email>Cocozhang@gmail.com</email>
+		</identification>
+		<skills>
+			<skill what="SQL" level="3"/>
+			<skill what="Scheme" level="3"/>
+			<skill what="Python" level="4"/>
+		</skills>
+	</resume>
+
+	<resume rID="3">
+		<summary>
+		Ensure Oracle database systems operate efficiently and securely.
+		</summary>
+		<identification>
+			<name>
+				<forename>Andrew</forename>
+				<surname>Chou</surname>
+				<honorific>Mr</honorific>
+				<honorific>Dr.</honorific>
+				<title>Chief Technology Officer</title>
+				<title>Senior Database Administrator</title>
+			</name>
+			<DOB>01/03/1988</DOB>
+			<citizenship>Korea</citizenship>
+			<address>13 st. George street, Toronto, ON</address>
+			<telephone>416-333-3333</telephone>
+			<email>Shiwon@gmail.com</email>
+		</identification>
+		<education>
+			<degree level="certificate">
+				<degreeName>SJ certificate</degreeName>
+				<institution>SS</institution>
+				<major>Drama</major>
+				<major>Action</major>
+				<honours />
+				<period>
+					<startDate>01/09/2008</startDate>
+					<endDate>01/05/2010</endDate>
+				</period>
+			</degree>
+			<degree level="masters">
+				<degreeName>Masters of OS</degreeName>
+				<institution>UofT</institution>
+				<major>ECE</major>
+				<minor>Physics</minor>
+				<minor>Environment</minor>
+				<minor>Math</minor>
+				<period>
+					<startDate>01/09/2008</startDate>
+					<endDate>01/05/2012</endDate>
+				</period>
+			</degree>
+		</education>
+		<experience>
+			<position where="SJ Company">
+				<title>Leader</title>
+				<description>
+				Have fun.
+				</description>
+				<period>
+					<startDate>01/07/2010</startDate>
+					<endDate>31/08/2010</endDate>
+				</period>
+			</position>
+			<position where="SShiba Company">
+				<title>SW Administrator</title>
+				<period>
+					<startDate>01/07/2011</startDate>
+					<endDate>31/08/2011</endDate>
+				</period>
+			</position>
+			<position where="ABC Company">
+				<title>Manager</title>
+				<title>Leader</title>
+				<description>
+				Experienced manager.
+				</description>
+				<period>
+					<startDate>01/07/2012</startDate>
+					<endDate>31/08/2012</endDate>
+				</period>
+			</position>
+
+		</experience>
+		<skills>
+			<skill what="SQL" level="5"/>
+			<skill what="Scheme" level="1"/>
+			<skill what="Python" level="3"/>
+			<skill what="R" level="2"/>
+			<skill what="LaTeX" level="5"/>
+		</skills>
+	</resume>
+
+	<resume rID="4">
+		<identification>
+			<name>
+				<forename>Monica</forename>
+				<surname>Zhang</surname>
+				<honorific>Ms</honorific>
+				<title>Chief Technology Officer</title>
+				<title>Database Administrator</title>
+			</name>
+			<DOB>01/04/1980</DOB>
+			<citizenship>America</citizenship>
+			<address>231 st. Gosh street, California, US</address>
+			<telephone>416-444-4444</telephone>
+			<email>monica@gmail.com</email>
+		</identification>
+		<education>
+			<degree level="doctoral">
+				<degreeName>Doc of lala</degreeName>
+				<institution>university of lala</institution>
+				<major>Mental</major>
+				<major>Control</major>
+				<period>
+					<startDate>01/09/2000</startDate>
+					<endDate>01/05/2004</endDate>
+				</period>
+			</degree>
+			<degree level="masters">
+				<degreeName>masters of lala</degreeName>
+				<institution>university of lala</institution>
+				<major>Mental</major>
+				<period>
+					<startDate>01/09/2005</startDate>
+					<endDate>01/05/2009</endDate>
+				</period>
+			</degree>
+
+		</education>
+		<experience>
+		</experience>
+		<skills>
+			<skill what="SQL" level="2"/>
+			<skill what="LaTeX" level="5"/>
+		</skills>
+	</resume>
+
+	<resume rID="5">
+		<identification>
+			<name>
+				<forename>Joe</forename>
+				<surname>Stumm</surname>
+				<honorific>Mr</honorific>
+			</name>
+			<DOB>21/01/1977</DOB>
+			<citizenship>Canada</citizenship>
+			<address>33 st. Fifth street, Toronto, ON</address>
+			<telephone>416-555-5555</telephone>
+			<email>joe@gmail.com</email>
+		</identification>
+		<education>
+			<degree level="professional">
+				<degreeName>profffff</degreeName>
+				<institution>university of profffff</institution>
+				<major>Data</major>
+				<period>
+					<startDate>01/09/1996</startDate>
+					<endDate>01/05/2000</endDate>
+				</period>
+			</degree>
+		</education>
+		<experience>
+			<position where="hhh Company">
+				<title>Database Administrator</title>
+				<description>
+				Configured database software for Oracle Application development environment.
+				</description>
+				<period>
+					<startDate>01/07/2000</startDate>
+					<endDate>31/08/2005</endDate>
+				</period>
+			</position>
+		</experience>
+		<skills>
+			<skill what="SQL" level="5"/>
+		</skills>
+	</resume>
+
+	<resume rID="6">
+		<summary>
+		Manage internal databases, from planning and testing stages through implementation and support.
+		</summary>
+		<identification>
+			<name>
+				<forename>What</forename>
+				<surname>Prad</surname>
+				<honorific>Mr</honorific>
+			</name>
+			<DOB>12/06/1991</DOB>
+			<citizenship>Canada</citizenship>
+			<address>66 st. Sixth street, Toronto, ON</address>
+			<telephone>416-666-6666</telephone>
+			<email>what666@gmail.com</email>
+		</identification>
+		<education>
+			<degree level="masters">
+				<degreeName>Bachelor</degreeName>
+				<institution>UofT</institution>
+				<major>ECE</major>
+				<minor>Math</minor>
+				<honours />
+				<period>
+					<startDate>01/09/2010</startDate>
+					<endDate>01/05/2014</endDate>
+				</period>
+			</degree>
+		</education>
+		<experience>
+			<position where="666 Company">
+				<title>Senior Database Administrator</title>
+				<description>
+				Created new databases, involving importing and exporting.
+				</description>
+				<period>
+					<startDate>01/07/2015</startDate>
+					<endDate>31/08/2016</endDate>
+				</period>
+			</position>
+		</experience>
+		<skills>
+			<skill what="SQL" level="1"/>
+			<skill what="Scheme" level="3"/>
+			<skill what="R" level="4"/>
+			<skill what="LaTeX" level="5"/>
+		</skills>
+	</resume>
+
+	<resume rID="7">
+		<identification>
+			<name>
+				<forename>Fugo</forename>
+				<surname>Rose</surname>
+				<honorific>Mr</honorific>
+				<title>Data Scientist</title>
+			</name>
+			<DOB>27/01/1989</DOB>
+			<citizenship>Canada</citizenship>
+			<address>33 st. George street, Toronto, ON</address>
+			<telephone>416-777-7777</telephone>
+			<email>fugo7@gmail.com</email>
+		</identification>
+		<experience>
+			<position where="Future Company">
+				<title>Data Scientist</title>
+				<description>
+				Responsible for Oracle 9i logical and physical databases design, implementation, and maintenance.
+				</description>
+				<period>
+					<startDate>01/07/2008</startDate>
+					<endDate>31/08/2010</endDate>
+				</period>
+			</position>
+		</experience>
+		<skills>
+			<skill what="SQL" level="5"/>
+			<skill what="R" level="1"/>
+		</skills>
+	</resume>
+
+</resumes>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT resumes (resume+)>
+<!ELEMENT resume (summary?,identification,education?,experience?,skills)>
+<!ATTLIST resume rID ID #REQUIRED>
+<!ELEMENT summary (#PCDATA)>
+<!ELEMENT identification (name,DOB,citizenship,address,telephone,email)>
+<!ELEMENT name (forename,surname,honorific+,title*)>
+<!ELEMENT forename (#PCDATA)>
+<!ELEMENT surname (#PCDATA)>
+<!ELEMENT honorific (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT DOB (#PCDATA)>
+<!ELEMENT citizenship (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT telephone (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT education (degree*)>
+<!ELEMENT degree (degreeName,institution,major+,minor*,honours?,period)>
+<!ATTLIST degree level (certificate|undergraduate|professional|masters|doctoral) #REQUIRED>
+<!ELEMENT degreeName (#PCDATA)>
+<!ELEMENT institution (#PCDATA)>
+<!ELEMENT major (#PCDATA)>
+<!ELEMENT minor (#PCDATA)>
+<!ELEMENT honours EMPTY>
+<!ELEMENT experience (position*)>
+<!ELEMENT position (title+,description?,period)>
+<!ATTLIST position where CDATA #REQUIRED>
+<!ELEMENT period (startDate,endDate)>
+<!ELEMENT startDate (#PCDATA)>
+<!ELEMENT endDate (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT skills (skill*)>
+<!ELEMENT skill EMPTY>
+<!ATTLIST skill what (SQL|Scheme|Python|R|LaTeX) #REQUIRED>
+<!ATTLIST skill level (1|2|3|4|5) #REQUIRED>

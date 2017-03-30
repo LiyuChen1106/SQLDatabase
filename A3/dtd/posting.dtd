@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT postings (posting+)>
+<!ELEMENT posting (position,reqSkill+,questions*)>
+<!ATTLIST posting pID ID #REQUIRED>
+<!ELEMENT position (#PCDATA)>
+<!ELEMENT reqSkill EMPTY>
+<!ATTLIST reqSkill what (SQL|Scheme|Python|R|LaTeX) #REQUIRED>
+<!ATTLIST reqSkill level (1|2|3|4|5) #REQUIRED>
+<!ATTLIST reqSkill importance (1|2|3|4|5) #REQUIRED>
+<!ELEMENT questions (question*)>
+<!ELEMENT question (#PCDATA)>
+<!ATTLIST question qID CDATA #REQUIRED>
