@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE resumes SYSTEM "resume.dtd">
 <resumes>
-	<resume rID="1">
+	<resume rID="r1">
 		<summary>
 		Over 9 years of experience, including 6 years as DBA in development and production environments.
 		</summary>
@@ -48,7 +48,7 @@
 		</skills>
 	</resume>
 
-	<resume rID="2">
+	<resume rID="r2">
 		<identification>
 			<name>
 				<forename>Coco</forename>
@@ -68,7 +68,7 @@
 		</skills>
 	</resume>
 
-	<resume rID="3">
+	<resume rID="r3">
 		<summary>
 		Ensure Oracle database systems operate efficiently and securely.
 		</summary>
@@ -152,7 +152,7 @@
 		</skills>
 	</resume>
 
-	<resume rID="4">
+	<resume rID="r4">
 		<identification>
 			<name>
 				<forename>Monica</forename>
@@ -197,7 +197,7 @@
 		</skills>
 	</resume>
 
-	<resume rID="5">
+	<resume rID="r5">
 		<identification>
 			<name>
 				<forename>Joe</forename>
@@ -238,7 +238,7 @@
 		</skills>
 	</resume>
 
-	<resume rID="6">
+	<resume rID="r6">
 		<summary>
 		Manage internal databases, from planning and testing stages through implementation and support.
 		</summary>
@@ -287,7 +287,7 @@
 		</skills>
 	</resume>
 
-	<resume rID="7">
+	<resume rID="r7">
 		<identification>
 			<name>
 				<forename>Fugo</forename>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE postings SYSTEM "posting.dtd">
 <postings>
-	<posting pID="1">
+	<posting pID="p1">
 		<position>Database Administrator</position>
 		<reqSkill what="SQL" level="4" importance="5"/>
 		<reqSkill what="Scheme" level="3" importance="1"/>
 		<reqSkill what="Python" level="5" importance="5"/>
 		<reqSkill what="LaTeX" level="2" importance="2"/>
-	<posting>
+	</posting>
 
-	<posting pID="2">
+	<posting pID="p2">
 		<position>Data Scientist</position>
 		<reqSkill what="SQL" level="5" importance="5"/>
 		<reqSkill what="Python" level="3" importance="4"/>
@@ -17,9 +17,9 @@
 		<questions>
 			<question qID="1">What is your experience?</question>
 		</questions>
-	<posting>
+	</posting>
 	
-	<posting pID="3">
+	<posting pID="p3">
 		<position>Chief Technology Officer</position>
 		<reqSkill what="R" level="5" importance="4"/>
 		<reqSkill what="LaTeX" level="4" importance="3"/>
@@ -27,9 +27,9 @@
 			<question qID="2">What is your plan?</question>
 			<question qID="3">Tech question</question>
 		</questions>
-	<posting>
+	</posting>
 
-	<posting pID="4">
+	<posting pID="p4">
 		<position>Senior Database Administrator</position>
 		<reqSkill what="SQL" level="5" importance="5"/>
 		<reqSkill what="Scheme" level="3" importance="1"/>
@@ -39,23 +39,23 @@
 		<questions>
 			<question qID="4">Tech question for senior</question>
 		</questions>
-	<posting>
+	</posting>
 
-	<posting pID="5">
+	<posting pID="p5">
 		<position>Algorithm</position>
 		<reqSkill what="Python" level="5" importance="5"/>
 		<questions>
 			<question qID="5">Find the shortest path using A*</question>
 		</questions>
-	<posting>
+	</posting>
 
-	<posting pID="6">
+	<posting pID="p6">
 		<position>SW developer</position>
 		<reqSkill what="SQL" level="3" importance="4"/>
 		<reqSkill what="Python" level="4" importance="5"/>
-	<posting>
+	</posting>
 
-	<posting pID="7">
+	<posting pID="p7">
 		<position>Tester</position>
 		<reqSkill what="SQL" level="1" importance="1"/>
 		<reqSkill what="Scheme" level="3" importance="1"/>
@@ -64,9 +64,9 @@
 		<questions>
 			<question qID="6">What is the most interesting bug that you have fixed?</question>
 		</questions>
-	<posting>
+	</posting>
 
-	<posting pID="8">
+	<posting pID="p8">
 		<position>QA</position>
 		<reqSkill what="Scheme" level="2" importance="4"/>
 		<reqSkill what="Python" level="4" importance="3"/>
@@ -74,5 +74,5 @@
 			<question qID="7">What is QA?</question>
 			<question qID="8">Tech questions on QA</question>
 		</questions>
-	<posting>
+	</posting>
 </postings>
