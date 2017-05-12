@@ -1,0 +1,118 @@
+-- Grader report
+
+SET SEARCH_PATH TO markus;
+DROP TABLE IF EXISTS q4;
+
+-- You must not change this table definition.
+CREATE TABLE q4 (
+	assignment_id integer,
+	username varchar(25), 
+	num_marked integer, 
+	num_not_marked integer,
+	min_mark real,
+	max_mark real
+);
+
+-- You may find it convenient to do this for each of the views
+-- that define your intermediate steps.  (But give them better names!)
+DROP VIEW IF EXISTS intermediate_step CASCADE;
+DROP VIEW IF EXISTS Info CASCADE;
+DROP VIEW IF EXISTS gradeAvail CASCADE;
+DROP VIEW IF EXISTS completeGraded CASCADE;
+DROP VIEW IF EXISTS partlyComplete CASCADE;
+DROP VIEW IF EXISTS notStarted CASCADE;
+DROP VIEW IF EXISTS notYetGraded CASCADE;
+DROP VIEW IF EXISTS total_possible_marks CASCADE;
+DROP VIEW IF EXISTS all_assignment_group CASCADE;
+DROP VIEW IF EXISTS total_mark_all_assignments CASCADE;
+DROP VIEW IF EXISTS minMax CASCADE;
+
+-- Define views for your intermediate steps here.
+-- Info needed
+CREATE VIEW Info
+AS
+SELECT username, assignment_id, group_id, 0 AS num_marked
+FROM Grader NATURAL RIGHT JOIN AssignmentGroup NATURAL RIGHT JOIN Assignment
+WHERE username is NOT NULL;
+
+-- 
+CREATE VIEW gradeAvail
+AS
+SELECT username, assignment_id, count(group_id) AS num_marked
+FROM Info NATURAL JOIN Result
+WHERE released = true
+GROUP BY username, assignment_id;
+
+CREATE VIEW notAvail
+AS
+(SELECT username, assignment_id
+ FROM Info)
+EXCEPT
+(SELECT username, assignment_id
+ FROM gradeAvail);
+
+CREATE VIEW completeGraded
+AS
+(SELECT DISTINCT username, assignment_id, num_marked
+ FROM notAvail NATURAL JOIN Info)
+UNION
+(SELECT *
+ FROM gradeAvail);
+
+
+--
+CREATE VIEW partlyComplete
+AS
+SELECT username, assignment_id, (comb.allGroup - completeGraded.num_marked) AS num_not_marked
+FROM (  SELECT username, assignment_id, count(group_id) AS allGroup
+	FROM Info
+	GROUP BY username, assignment_id ) AS comb NATURAL JOIN completeGraded;
+
+CREATE VIEW notStarted
+AS
+(SELECT username, assignment_id
+ FROM Info) 
+EXCEPT
+(SELECT username, assignment_id
+ FROM partlyComplete);
+
+CREATE VIEW notYetGraded
+AS
+(SELECT * FROM partlyComplete)
+UNION
+(SELECT username, assignment_id, count(group_id) AS num_not_marked
+ FROM notStarted NATURAL JOIN Info
+ GROUP BY username, assignment_id);
+
+
+-----!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!percentage
+-- make a list for all assignments and groups
+CREATE VIEW all_assignment_group AS
+SELECT assignment_id, group_id
+FROM Assignment natural left join AssignmentGroup;
+
+-- total possible mark for each assignments
+CREATE VIEW total_possible_marks AS
+SELECT assignment_id, sum(weight * out_of) as total_possible_mark
+FROM RubricItem
+group by assignment_id;
+
+-- total mark for each group including all assignments
+CREATE VIEW total_mark_all_assignments AS
+SELECT assignment_id, group_id, (mark / total_possible_mark) * 100 as mark_percent
+FROM all_assignment_group natural left join total_possible_marks natural left join Result;
+
+
+--
+CREATE VIEW minMax
+AS
+SELECT username, assignment_id, min(mark_percent) AS min_mark, max(mark_percent) AS max_mark
+FROM Info NATURAL JOIN total_mark_all_assignments
+GROUP BY username, assignment_id;
+
+-- Final answer.
+INSERT INTO q4
+(SELECT assignment_id, username, num_marked, num_not_marked, min_mark, max_mark
+ FROM completeGraded NATURAL RIGHT JOIN notYetGraded NATURAL LEFT JOIN minMax)
+ --ORDER BY assignment_id, username)
+	-- put a final query here so that its results will go into the table.

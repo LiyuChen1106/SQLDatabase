@@ -1,0 +1,55 @@
+-- Uneven workloads
+
+SET SEARCH_PATH TO markus;
+DROP TABLE IF EXISTS q5;
+
+-- You must not change this table definition.
+CREATE TABLE q5 (
+	assignment_id integer,
+	username varchar(25), 
+	num_assigned integer
+);
+
+-- You may find it convenient to do this for each of the views
+-- that define your intermediate steps.  (But give them better names!)
+DROP VIEW IF EXISTS intermediate_step CASCADE;
+DROP VIEW IF EXISTS Info CASCADE;
+DROP VIEW IF EXISTS groupCount CASCADE;
+DROP VIEW IF EXISTS allRange CASCADE;
+DROP VIEW IF EXISTS report CASCADE;
+
+-- Define views for your intermediate steps here.
+-- Info needed
+CREATE VIEW Info
+AS
+SELECT username, assignment_id, group_id
+FROM Grader NATURAL RIGHT JOIN AssignmentGroup NATURAL RIGHT JOIN Assignment
+WHERE username is NOT NULL;
+
+-- Count #groups each TA marks in each assignment
+CREATE VIEW groupCount
+AS
+SELECT username, assignment_id, count(group_id) AS num_assigned
+FROM Info
+GROUP BY username, assignment_id;
+
+-- All possible range
+CREATE VIEW allRange
+AS
+SELECT g1.username AS user1, g2.username AS user2, g1.assignment_id, (g1.num_assigned - g2.num_assigned) AS range
+FROM groupCount AS g1, groupCount AS g2
+WHERE g1.username < g2.username AND g1.assignment_id = g2.assignment_id;
+
+-- Having range greater than 10
+CREATE VIEW report
+AS
+SELECT assignment_id, max(abs(range)) AS reportRange
+FROM allRange
+GROUP BY assignment_id;
+
+-- Final answer.
+INSERT INTO q5 
+(SELECT DISTINCT assignment_id, username, num_assigned
+ FROM report NATURAL RIGHT JOIN groupCount
+ WHERE reportRange > 10)
+	-- put a final query here so that its results will go into the table.

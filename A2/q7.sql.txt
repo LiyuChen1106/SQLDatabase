@@ -1,0 +1,79 @@
+-- High coverage
+
+SET SEARCH_PATH TO markus;
+DROP TABLE IF EXISTS q7;
+
+-- You must not change this table definition.
+CREATE TABLE q7 (
+	ta varchar(100)
+);
+
+-- You may find it convenient to do this for each of the views
+-- that define your intermediate steps.  (But give them better names!)
+DROP VIEW IF EXISTS intermediate_step CASCADE;
+DROP VIEW IF EXISTS graderInfo CASCADE;
+DROP VIEW IF EXISTS possibleGraderAssign CASCADE;
+DROP VIEW IF EXISTS notGradeEveryAssign CASCADE;
+DROP VIEW IF EXISTS gradeEveryAssign CASCADE;
+DROP VIEW IF EXISTS possibleGraderStudent CASCADE;
+DROP VIEW IF EXISTS notGradeEveryStudent CASCADE;
+DROP VIEW IF EXISTS gradeEveryStudent CASCADE;
+
+-- Define views for your intermediate steps here.
+-- Grader info
+CREATE VIEW graderInfo
+AS
+SELECT username, assignment_id, group_id
+FROM Grader NATURAL RIGHT JOIN AssignmentGroup NATURAL RIGHT JOIN Assignment
+WHERE username is NOT NULL AND group_id is NOT NULL;
+
+-- All TA-assignment combination
+CREATE VIEW possibleGraderAssign
+AS
+SELECT DISTINCT username, assignment_id
+FROM (SELECT username FROM Grader) AS ta, (SELECT assignment_id FROM Assignment) AS assignment;
+
+-- TA who did not grade at least one group for every assignment
+CREATE VIEW notgradeEveryAssign
+AS
+SELECT DISTINCT username 
+FROM ((SELECT * FROM possibleGraderAssign)
+	EXCEPT
+	(SELECT DISTINCT username, assignment_id
+ 	 FROM graderInfo)) AS exp1;
+
+-- TA who graded at least one group for every assignment
+CREATE VIEW gradeEveryAssign
+AS
+SELECT username AS taName
+FROM ((SELECT username FROM possibleGraderAssign) 
+	EXCEPT (SELECT * FROM notgradeEveryAssign)) AS exp11;
+
+-- All possible TA-student combination
+CREATE VIEW possibleGraderStudent
+AS
+SELECT DISTINCT ta.username AS taName, student.username AS studentName
+FROM (SELECT username FROM Grader) AS ta, (SELECT username FROM Membership) AS student;
+
+-- TA who did not grade every student on at least one assignment
+CREATE VIEW notGradeEveryStudent
+AS
+SELECT DISTINCT taName
+FROM ((SELECT * FROM possibleGraderStudent)
+	EXCEPT
+	(SELECT DISTINCT graderInfo.username AS taName, Membership.username AS studentName
+  	 FROM graderInfo, Membership
+	 WHERE graderInfo.group_id = Membership.group_id)) AS exp2;
+
+-- TA who graded every student on at least one assignment
+CREATE VIEW gradeEveryStudent
+AS
+(SELECT taName FROM possibleGraderStudent) 
+EXCEPT (SELECT * FROM notGradeEveryStudent);
+
+
+-- Final answer.
+INSERT INTO q7 
+((SELECT * FROM gradeEveryAssign)
+  INTERSECT (SELECT * FROM gradeEveryStudent))
+	-- put a final query here so that its results will go into the table.

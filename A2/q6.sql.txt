@@ -1,0 +1,74 @@
+-- Steady work
+
+SET SEARCH_PATH TO markus;
+DROP TABLE IF EXISTS q6;
+
+-- You must not change this table definition.
+CREATE TABLE q6 (
+	group_id integer,
+	first_file varchar(25),
+	first_time timestamp,
+	first_submitter varchar(25),
+	last_file varchar(25),
+	last_time timestamp, 
+	last_submitter varchar(25),
+	elapsed_time interval
+);
+
+-- You may find it convenient to do this for each of the views
+-- that define your intermediate steps.  (But give them better names!)
+DROP VIEW IF EXISTS A1_group CASCADE;
+DROP VIEW IF EXISTS A1_submission CASCADE;
+DROP VIEW IF EXISTS first_date CASCADE;
+DROP VIEW IF EXISTS first_submission CASCADE;
+DROP VIEW IF EXISTS last_date CASCADE;
+DROP VIEW IF EXISTS last_submission CASCADE;
+DROP VIEW IF EXISTS time_difference CASCADE;
+
+-- Define views for your intermediate steps here.
+
+
+-- group_ids for all A1 groups
+CREATE VIEW A1_group AS
+SELECT group_id
+FROM Assignment natural join AssignmentGroup
+WHERE description = 'A1';
+
+-- submissions for all A1 groups
+CREATE VIEW A1_submission AS
+SELECT group_id, file_name, submission_date, username
+FROM A1_group natural join Submissions;
+
+-- first submission date
+CREATE VIEW first_date AS
+SELECT group_id, min(submission_date) as submission_date
+FROM A1_submission
+group by group_id;
+
+-- all info for first submission(s)
+CREATE VIEW first_submission AS
+SELECT group_id, file_name as first_file, submission_date as first_time, username as first_submitter
+FROM A1_submission natural join first_date;
+
+-- last submission date
+CREATE VIEW last_date AS
+SELECT group_id, max(submission_date) as submission_date
+FROM A1_submission
+group by group_id;
+
+-- all info for last submission(s)
+CREATE VIEW last_submission AS
+SELECT group_id, file_name as last_file, submission_date as last_time, username as last_submitter
+FROM A1_submission natural join last_date;
+
+-- elapsed time
+CREATE VIEW time_difference AS
+SELECT first_date.group_id, (last_date.submission_date - first_date.submission_date) as elapsed_time
+FROM first_date join last_date on last_date.group_id = first_date.group_id;
+
+
+-- Final answer.
+INSERT INTO q6 
+	-- put a final query here so that its results will go into the table.
+(SELECT *
+FROM first_submission natural join last_submission natural join time_difference);

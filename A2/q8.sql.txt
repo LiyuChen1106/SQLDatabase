@@ -1,0 +1,129 @@
+-- Never solo by choice
+
+SET SEARCH_PATH TO markus;
+DROP TABLE IF EXISTS q8;
+
+-- You must not change this table definition.
+CREATE TABLE q8 (
+	username varchar(25),
+	group_average real,
+	solo_average real
+);
+
+-- You may find it convenient to do this for each of the views
+-- that define your intermediate steps.  (But give them better names!)
+
+DROP VIEW IF EXISTS all_assignment_group CASCADE;
+DROP VIEW IF EXISTS total_possible_marks CASCADE;
+DROP VIEW IF EXISTS total_mark_all_assignments CASCADE;
+DROP VIEW IF EXISTS assignment_allow_group CASCADE;
+DROP VIEW IF EXISTS assignment_not_allow_group CASCADE;
+DROP VIEW IF EXISTS all_possible CASCADE;
+DROP VIEW IF EXISTS collaborators_group CASCADE;
+DROP VIEW IF EXISTS collaborators CASCADE;
+DROP VIEW IF EXISTS ever_solo CASCADE;
+DROP VIEW IF EXISTS never_solo CASCADE;
+DROP VIEW IF EXISTS should_have CASCADE;
+DROP VIEW IF EXISTS contribute CASCADE;
+DROP VIEW IF EXISTS not_every CASCADE;
+DROP VIEW IF EXISTS every CASCADE;
+DROP VIEW IF EXISTS target_group CASCADE;
+DROP VIEW IF EXISTS group_avg CASCADE;
+DROP VIEW IF EXISTS solo_avg CASCADE;
+
+-- Define views for your intermediate steps here.
+
+-- make a list for all assignments and groups
+CREATE VIEW all_assignment_group AS
+SELECT assignment_id, group_id
+FROM Assignment natural left join AssignmentGroup;
+
+-- total possible mark for each assignments
+CREATE VIEW total_possible_marks AS
+SELECT assignment_id, sum(weight * out_of) as total_possible_mark
+FROM RubricItem
+group by assignment_id;
+
+-- total mark for each student including all assignments
+CREATE VIEW total_mark_all_assignments AS
+SELECT assignment_id, username, (mark / total_possible_mark) * 100 as mark_percent
+FROM all_assignment_group natural left join total_possible_marks natural left join Result natural left join Membership;
+
+-- assignments that allow groups
+CREATE VIEW assignment_allow_group AS
+SELECT assignment_id
+FROM Assignment
+WHERE group_max > 1;
+
+-- assignments that do not allow groups
+CREATE VIEW assignment_not_allow_group AS
+SELECT assignment_id
+FROM Assignment
+WHERE group_max = 1;
+
+-- all possible combinations
+CREATE VIEW all_possible AS
+SELECT username, assignment_id 
+FROM MarkusUser, assignment_allow_group 
+WHERE type = 'student';
+
+-- group id for collaborators
+CREATE VIEW collaborators_group AS
+SELECT group_id
+FROM Membership
+group by group_id
+having count(*) > 1;
+
+-- username and assignment_id for collaborators
+CREATE VIEW collaborators AS
+SELECT username, assignment_id
+FROM collaborators_group natural join Membership natural join AssignmentGroup;
+
+-- username for students that ever worked solo on an assignment that allows groups
+CREATE VIEW ever_solo AS
+(SELECT username FROM all_possible) except all (SELECT username FROM collaborators);
+
+-- username for students that never worked solo on an assignment that allows groups
+CREATE VIEW never_solo AS
+(SELECT username FROM collaborators) except (SELECT username FROM ever_solo);
+
+-- all possible contributions
+CREATE VIEW should_have AS
+SELECT username, group_id 
+FROM Membership natural join AssignmentGroup;
+
+-- existing contributions
+CREATE VIEW contribute AS
+SELECT username, group_id 
+FROM Submissions;
+
+-- username for students that didn't submit at least one file for every assignment
+CREATE VIEW not_every AS
+(SELECT username FROM should_have) except all (SELECT username FROM contribute);
+
+-- username for students that submitted at least one file for every assignment
+CREATE VIEW every AS
+(SELECT username FROM contribute) except (SELECT username FROM not_every);
+
+-- username for students that never worked solo on an assignment that allows groups
+CREATE VIEW target_group AS
+SELECT username
+FROM never_solo natural join every;
+
+-- their average grade on the assignments that allowed groups
+CREATE VIEW group_avg AS
+SELECT username, avg(mark_percent) as group_average
+FROM total_mark_all_assignments natural join assignment_allow_group natural join target_group 
+group by username;
+
+-- their average grade on the assignments that did not allow groups,
+CREATE VIEW solo_avg AS
+SELECT username, avg(mark_percent) as solo_average
+FROM total_mark_all_assignments natural join assignment_not_allow_group natural join target_group 
+group by username;
+
+-- Final answer.
+INSERT INTO q8
+	-- put a final query here so that its results will go into the table.
+(SELECT *
+FROM group_avg natural left join solo_avg); 

@@ -1,0 +1,70 @@
+-- Inseparable
+
+SET SEARCH_PATH TO markus;
+DROP TABLE IF EXISTS q9;
+
+-- You must not change this table definition.
+CREATE TABLE q9 (
+	student1 varchar(25),
+	student2 varchar(25)
+);
+
+-- You may find it convenient to do this for each of the views
+-- that define your intermediate steps.  (But give them better names!)
+
+DROP VIEW IF EXISTS assignment_allow_group CASCADE;
+DROP VIEW IF EXISTS all_students CASCADE;
+DROP VIEW IF EXISTS all_possible CASCADE;
+DROP VIEW IF EXISTS exist CASCADE;
+DROP VIEW IF EXISTS exist_pair CASCADE;
+DROP VIEW IF EXISTS separable CASCADE;
+DROP VIEW IF EXISTS inseparable CASCADE;
+
+-- Define views for your intermediate steps here.
+
+
+-- assignments that allow groups
+CREATE VIEW assignment_allow_group AS
+SELECT assignment_id
+FROM Assignment
+WHERE group_max > 1;
+
+-- username for all students
+CREATE VIEW all_students AS
+SELECT username 
+FROM MarkusUser 
+WHERE type = 'student';
+
+-- all possible pairs
+CREATE VIEW all_possible AS
+SELECT a1.username as student1, a2.username as student2, assignment_id
+FROM all_students as a1, all_students as a2, assignment_allow_group
+WHERE a1.username < a2.username; 
+
+-- existing username and assignment_id
+CREATE VIEW exist AS
+SELECT username, group_id, assignment_id
+FROM AssignmentGroup natural join Membership natural join assignment_allow_group;
+
+-- all existing pairs
+CREATE VIEW exist_pair AS
+SELECT e1.username as student1, e2.username as student2, e1.group_id, e1.assignment_id
+FROM exist as e1, exist as e2
+WHERE e1.username < e2.username and e1.group_id = e2.group_id;
+
+-- separable
+CREATE VIEW separable AS
+(SELECT student1, student2, assignment_id FROM all_possible)
+EXCEPT
+(SELECT student1, student2, assignment_id FROM exist_pair);
+
+-- inseparable
+CREATE VIEW inseparable AS
+(SELECT student1, student2 FROM all_possible)
+EXCEPT
+(SELECT student1, student2 FROM separable);
+
+-- Final answer.
+INSERT INTO q9 
+	-- put a final query here so that its results will go into the table.
+(SELECT * FROM inseparable);

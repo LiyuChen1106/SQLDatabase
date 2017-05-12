@@ -1,0 +1,84 @@
+-- A1 report
+
+SET SEARCH_PATH TO markus;
+DROP TABLE IF EXISTS q10;
+
+-- You must not change this table definition.
+CREATE TABLE q10 (
+	group_id integer,
+	mark real,
+	compared_to_average real,
+	status varchar(5)
+);
+
+-- You may find it convenient to do this for each of the views
+-- that define your intermediate steps.  (But give them better names!)
+
+DROP VIEW IF EXISTS A1_group CASCADE;
+DROP VIEW IF EXISTS all_assignment_group CASCADE;
+DROP VIEW IF EXISTS total_possible_marks CASCADE;
+DROP VIEW IF EXISTS A1_group_mark CASCADE;
+DROP VIEW IF EXISTS A1_avg_mark CASCADE;
+DROP VIEW IF EXISTS above_avg CASCADE;
+DROP VIEW IF EXISTS at_avg CASCADE;
+DROP VIEW IF EXISTS below_avg CASCADE;
+DROP VIEW IF EXISTS almost_done CASCADE;
+
+-- Define views for your intermediate steps here.
+
+-- group_ids for all A1 groups
+CREATE VIEW A1_group AS
+SELECT group_id
+FROM Assignment natural join AssignmentGroup
+WHERE description = 'A1';
+
+-- make a list for all assignments and groups
+CREATE VIEW all_assignment_group AS
+SELECT assignment_id, group_id
+FROM Assignment natural left join AssignmentGroup;
+
+-- total possible mark for each assignments
+CREATE VIEW total_possible_marks AS
+SELECT assignment_id, sum(weight * out_of) as total_possible_mark
+FROM RubricItem
+group by assignment_id;
+
+-- percentage mark for each A1 group
+CREATE VIEW A1_group_mark AS
+SELECT group_id, (mark / total_possible_mark) * 100 as mark
+FROM all_assignment_group natural left join total_possible_marks natural left join Result natural right join A1_group;
+
+-- average mark for A1
+CREATE VIEW A1_avg_mark AS
+SELECT avg(mark) as A1_avg
+FROM A1_group_mark;
+
+-- above average groups
+CREATE VIEW above_avg AS
+SELECT group_id, mark, mark - A1_avg as compared_to_average, cast('above' as varchar) as status
+FROM A1_group_mark, A1_avg_mark
+WHERE mark - A1_avg > 0;
+
+-- at average groups
+CREATE VIEW at_avg AS
+SELECT group_id, mark, mark - A1_avg as compared_to_average, cast('at' as varchar) as status
+FROM A1_group_mark, A1_avg_mark
+WHERE mark = A1_avg;
+
+-- below average groups
+CREATE VIEW below_avg AS
+SELECT group_id, mark, mark - A1_avg as compared_to_average, cast('below' as varchar) as status
+FROM A1_group_mark, A1_avg_mark
+WHERE mark - A1_avg < 0;
+
+-- all needed information for A1 groups that have a mark
+CREATE VIEW almost_done AS
+(SELECT * FROM above_avg) union 
+(SELECT * FROM at_avg) union 
+(SELECT * FROM below_avg);
+
+-- Final answer.
+INSERT INTO q10
+	-- put a final query here so that its results will go into the table.
+(SELECT * 
+FROM almost_done natural right join A1_group); 
