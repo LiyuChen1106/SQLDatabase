@@ -1,0 +1,30 @@
+declare variable $dataset0 external;
+declare variable $dataset1 external;
+
+<histogram>
+{
+  let $pdoc := $dataset0
+  let $rdoc := $dataset1
+  for $skillname in distinct-values($pdoc/postings/posting/reqSkill/@what)
+  return   
+    <skill 
+      name = '{ $skillname }'
+    >
+      {for $i in 1 to 5      
+      let $qualified := 
+	for $skill in $rdoc//skill
+	where $skill/@level = $i and $skill/@what = $skillname
+	return $skill
+      return
+      <count       
+	level = '{ $i }'
+	n = '{ count($qualified) }'
+      />} 
+    </skill>
+}
+</histogram>  
+
+
+
+ 
+ 

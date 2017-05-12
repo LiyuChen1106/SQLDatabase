@@ -1,0 +1,17 @@
+declare variable $dataset0 external;
+
+<qualified>
+{
+  let $rdoc := $dataset0
+  for $resume in $rdoc//resume
+  where $resume/skills/count(skill) > 3
+  return 
+    <candidate 
+      rid = '{ data($resume/@rID) }'
+      numskills = '{ data($resume/skills/count(skill)) }'
+      citizenzhip = '{ data($resume//citizenship) }'
+    >
+      <name> { data($resume//forename) } </name>    
+    </candidate>
+}
+</qualified>  

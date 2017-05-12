@@ -1,0 +1,11 @@
+declare variable $dataset0 external;
+
+<important>
+{
+  let $pdoc := $dataset0
+  let $maxValue := max($pdoc//reqSkill/(@level * @importance))
+  for $posting in $pdoc//posting
+  where $posting/reqSkill/(@level * @importance) = $maxValue
+  return $posting  
+}
+</important> 

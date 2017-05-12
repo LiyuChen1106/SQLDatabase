@@ -1,0 +1,25 @@
+declare variable $dataset0 external;
+declare variable $dataset1 external;
+
+<bestskills>
+{
+  let $idoc := $dataset0
+  let $rdoc := $dataset1
+  for $interview in $idoc//interview
+  let $maxscore := max($interview/assessment/communication union $interview/assessment/enthusiasm union $interview/assessment/collegiality) 
+  let $name :=
+    for $resume in $rdoc//resume
+    where $resume/@rID = $interview/@rID
+    return $resume//forename
+  for $item in $interview/assessment/communication union $interview/assessment/enthusiasm union $interview/assessment/collegiality
+  where $item = $maxscore
+  return 
+    <best 
+      resume = '{ data($name) }'
+      position = '{ data($interview/@pID) }'
+    >
+      {$item}
+    </best>
+}
+</bestskills>  
+ 

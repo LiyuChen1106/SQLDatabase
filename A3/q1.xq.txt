@@ -1,0 +1,10 @@
+declare variable $dataset0 external;
+
+<dbjobs>
+{
+  let $pdoc := $dataset0
+  for $skill in $pdoc//posting/reqSkill
+  where $skill/@what = "SQL" and $skill/@level = "5"
+  return $skill/..    
+}
+</dbjobs> 
